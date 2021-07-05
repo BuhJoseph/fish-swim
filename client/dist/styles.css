@@ -1,0 +1,53 @@
+#position-window {
+  position: absolute;
+  margin: auto;
+  border: solid 1px lightblue;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -500px;
+}
+
+.window {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  overflow: hidden;
+}
+
+#player {
+  position: absolute;
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  margin-top: -25px;
+}
+
+#lane0 {
+  position: absolute;
+  width: 100%;
+  top: 150px;
+  border: solid 1px black;
+}
+
+#lane1 {
+  position: absolute;
+  width: 100%;
+  top: 300px;
+  border: solid 1px black;
+}
+
+#lane2 {
+  position: absolute;
+  width: 100%;
+  top: 450px;
+  border: solid 1px black;
+}
+
+.obstacle {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  margin-top: -25px;
+  border: solid 1px red;
+}
