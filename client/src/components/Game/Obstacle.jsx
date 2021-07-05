@@ -22,6 +22,7 @@ class Obstacle extends React.Component {
       player.top <= obstacle.top + 50 &&
       player.top + 50 >= obstacle.top) {
       style.backgroundColor = 'transparent';
+      props.handleCollision();
     } else {
       style.backgroundColor = 'red';
     }

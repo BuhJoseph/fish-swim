@@ -7,9 +7,9 @@ class Window extends React.Component {
   constructor(props) {
     super(props);
 
-    this.stages = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7];
+    this.stages = [1, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7];
     this.base = {
-      xVel: 10,
+      xVel: 5,
       rate: 1500
     }
 
@@ -21,18 +21,21 @@ class Window extends React.Component {
       },
       obstacles: [],
       prevObstacle: Math.floor(Math.random() * 3),
-      stage: 12
+      stage: 0
     }
 
     this.handleKeydown = this.handleKeydown.bind(this);
     this.moveLeft = this.moveLeft.bind(this);
     this.generateObstacles = this.generateObstacles.bind(this);
+    this.incrementStage = this.incrementStage.bind(this);
+    this.handleCollision = this.handleCollision.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown);
     this.moveLeft();
     this.generateObstacles();
+    this.incrementStage();
   }
 
   moveLeft() {
@@ -50,7 +53,7 @@ class Window extends React.Component {
       obstacles: this.state.obstacles
     });
     if (this.state.alive) {
-      setTimeout(this.moveLeft, 33);
+      setTimeout(this.moveLeft, 16);
     }
   }
 
@@ -119,6 +122,18 @@ class Window extends React.Component {
     }
   }
 
+  incrementStage() {
+    if (this.state.stage < this.stages.length - 1) {
+      this.setState({
+        stage: this.state.stage + 1
+      });
+    }
+
+    if (this.state.alive) {
+      setTimeout(this.incrementStage, 10000);
+    }
+  }
+
   handleKeydown(e) {
     switch(e.keyCode) {
       //Up arrow
@@ -147,6 +162,12 @@ class Window extends React.Component {
     }
   }
 
+  handleCollision() {
+    this.setState({
+      alive: false
+    });
+  }
+
 
   render() {
     return (
@@ -157,7 +178,7 @@ class Window extends React.Component {
           <div id="lane2"></div>
           <Player position={this.state.playerPos}/>
           {this.state.obstacles.map(obstacle => {
-            return <Obstacle position={obstacle} playerPos={this.state.playerPos} />
+            return <Obstacle position={obstacle} playerPos={this.state.playerPos} handleCollision={this.handleCollision}/>
           })}
         </div>
       </div>
