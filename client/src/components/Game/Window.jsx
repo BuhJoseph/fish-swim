@@ -7,6 +7,12 @@ class Window extends React.Component {
   constructor(props) {
     super(props);
 
+    this.stages = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7];
+    this.base = {
+      xVel: 10,
+      rate: 1500
+    }
+
     this.state = {
       alive: true,
       playerPos: {
@@ -15,7 +21,7 @@ class Window extends React.Component {
       },
       obstacles: [],
       prevObstacle: Math.floor(Math.random() * 3),
-      xVel: 5,
+      stage: 12
     }
 
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -31,8 +37,9 @@ class Window extends React.Component {
 
   moveLeft() {
     var obstacles = this.state.obstacles;
+    var xVel = this.stages[this.state.stage] * this.base.xVel;
     for (var i = 0; i < obstacles.length;) {
-      obstacles[i].left = obstacles[i].left - this.state.xVel;
+      obstacles[i].left = obstacles[i].left - xVel;
       if (obstacles[i].left < -50) {
         obstacles.splice(i, 1);
       } else {
@@ -53,31 +60,31 @@ class Window extends React.Component {
       [
         {
           top: 300,
-          left: 1050
+          left: 1350
         },
         {
           top: 450,
-          left: 1050
+          left: 1350
         }
       ],
       [
         {
           top: 150,
-          left: 1050
+          left: 1350
         },
         {
           top: 450,
-          left: 1050
+          left: 1350
         }
       ],
       [
         {
           top: 150,
-          left: 1050
+          left: 1350
         },
         {
           top: 300,
-          left: 1050
+          left: 1350
         }
       ]
     ];
@@ -107,7 +114,8 @@ class Window extends React.Component {
     }
 
     if (this.state.alive) {
-      setTimeout(this.generateObstacles, 1500);
+      var rate = this.base.rate / this.stages[this.state.stage];
+      setTimeout(this.generateObstacles, rate);
     }
   }
 

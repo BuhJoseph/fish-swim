@@ -21,9 +21,9 @@ class Obstacle extends React.Component {
       player.left + 50 >= obstacle.left &&
       player.top <= obstacle.top + 50 &&
       player.top + 50 >= obstacle.top) {
-      style.backgroundColor = 'red';
-    } else {
       style.backgroundColor = 'transparent';
+    } else {
+      style.backgroundColor = 'red';
     }
 
     style.top = style.top + 'px';
