@@ -163,9 +163,11 @@ class Window extends React.Component {
   }
 
   handleCollision() {
-    this.setState({
-      alive: false
-    });
+    if (this.state.alive) {
+      this.setState({
+        alive: false
+      });
+    }
   }
 
 
