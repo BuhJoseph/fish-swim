@@ -7,10 +7,10 @@ class Window extends React.Component {
   constructor(props) {
     super(props);
 
-    this.stages = [1, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7];
+    this.stages = [1, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.25];
     this.base = {
       xVel: 5,
-      rate: 1500
+      rate: 1200
     }
 
     this.state = {
@@ -21,7 +21,8 @@ class Window extends React.Component {
       },
       obstacles: [],
       prevObstacle: Math.floor(Math.random() * 3),
-      stage: 0
+      stage: 0,
+      score: 0
     }
 
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -41,17 +42,23 @@ class Window extends React.Component {
   moveLeft() {
     var obstacles = this.state.obstacles;
     var xVel = this.stages[this.state.stage] * this.base.xVel;
+    var pass = false;
     for (var i = 0; i < obstacles.length;) {
       obstacles[i].left = obstacles[i].left - xVel;
       if (obstacles[i].left < -50) {
         obstacles.splice(i, 1);
+        pass = true;
       } else {
         i++;
       }
     }
-    this.setState({
+    var state = {
       obstacles: this.state.obstacles
-    });
+    };
+    if (pass) {
+      state.score = this.state.score + Math.floor(10 * this.stages[this.state.stage]);
+    }
+    this.setState(state);
     if (this.state.alive) {
       setTimeout(this.moveLeft, 16);
     }
@@ -130,7 +137,7 @@ class Window extends React.Component {
     }
 
     if (this.state.alive) {
-      setTimeout(this.incrementStage, 10000);
+      setTimeout(this.incrementStage, 5000);
     }
   }
 
@@ -175,14 +182,15 @@ class Window extends React.Component {
     return (
       <div id="position-window">
         <div className="window">
-          <div id="lane0"></div>
+          {/* <div id="lane0"></div>
           <div id="lane1"></div>
-          <div id="lane2"></div>
+          <div id="lane2"></div> */}
           <Player position={this.state.playerPos}/>
           {this.state.obstacles.map(obstacle => {
             return <Obstacle position={obstacle} playerPos={this.state.playerPos} handleCollision={this.handleCollision}/>
           })}
         </div>
+        <div id="score">Score: {this.state.score}</div>
       </div>
     );
   }

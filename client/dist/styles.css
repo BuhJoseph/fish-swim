@@ -52,3 +52,10 @@
   margin-top: -25px;
   border: solid 1px red;
 }
+
+#score {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+}
