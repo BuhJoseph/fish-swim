@@ -28,9 +28,7 @@ class Obstacle extends React.Component {
     style.left = style.left + 'px';
 
     return (
-      <div className="obstacle" style={style}>
-
-      </div>
+      <div className="obstacle" style={style}></div>
     );
   }
 }

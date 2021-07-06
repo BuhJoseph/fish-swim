@@ -3,15 +3,16 @@ import React from 'react';
 import Player from './Player.jsx';
 import Obstacle from './Obstacle.jsx';
 import GameOver from './GameOver.jsx';
+import Background from './Background.jsx';
 
 class Window extends React.Component {
   constructor(props) {
     super(props);
 
-    this.stages = [1, 1, 1.1, 1.2, 1.4, 1.7, 2, 2.5, 3, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.25];
+    this.stages = [1, 1, 1.1, 1.2, 1.4, 1.7, 2, 2.1, 2.3, 2.5, 2.7, 2.9, 3, 3.1, 3.3, 3.5, 3.7, 3.9, 4];
     this.base = {
       xVel: 5,
-      rate: 1200
+      rate: 1000
     }
 
     this.state = {
@@ -23,7 +24,18 @@ class Window extends React.Component {
       obstacles: [],
       prevObstacle: Math.floor(Math.random() * 3),
       stage: 0,
-      score: 0
+      stageRate: 5000,
+      score: 0,
+      backgrounds: [
+        {
+          id: 0,
+          left: 0
+        },
+        {
+          id: 1,
+          left: 1300
+        }
+      ]
     }
 
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -49,7 +61,17 @@ class Window extends React.Component {
 
   moveLeft() {
     var obstacles = this.state.obstacles;
+    var backgrounds = this.state.backgrounds
     var xVel = this.stages[this.state.stage] * this.base.xVel;
+
+    for (var i = 0; i < backgrounds.length; i++) {
+      backgrounds[i].left = backgrounds[i].left - xVel / 3;
+      if (backgrounds[i].left < -1300) {
+        backgrounds[i].left = 2600 + backgrounds[i].left;
+        backgrounds[i].id = (backgrounds[i].id + 2) % 3 ;
+      }
+    }
+
     var pass = false;
     for (var i = 0; i < obstacles.length;) {
       obstacles[i].left = obstacles[i].left - xVel;
@@ -60,8 +82,10 @@ class Window extends React.Component {
         i++;
       }
     }
+
     var state = {
-      obstacles: this.state.obstacles
+      obstacles: this.state.obstacles,
+      backgrounds: this.state.backgrounds
     };
     if (pass) {
       state.score = this.state.score + this.stages[this.state.stage];
@@ -145,7 +169,7 @@ class Window extends React.Component {
     }
 
     if (this.state.alive) {
-      setTimeout(this.incrementStage, 8000);
+      setTimeout(this.incrementStage, this.state.stageRate);
     }
   }
 
@@ -214,9 +238,9 @@ class Window extends React.Component {
     return (
       <div id="position-window">
         <div className="window">
-          {/* <div id="lane0"></div>
-          <div id="lane1"></div>
-          <div id="lane2"></div> */}
+          {this.state.backgrounds.map(background => {
+            return <Background background={background} />
+          })}
           <Player position={this.state.playerPos}/>
           {this.state.obstacles.map(obstacle => {
             return <Obstacle position={obstacle} playerPos={this.state.playerPos} handleCollision={this.handleCollision}/>
