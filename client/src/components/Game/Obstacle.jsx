@@ -17,14 +17,11 @@ class Obstacle extends React.Component {
       style[key] = obstacle[key];
     }
 
-    if (player.left <= obstacle.left + 50 &&
+    if (player.left <= obstacle.left + 45 &&
       player.left + 50 >= obstacle.left &&
       player.top <= obstacle.top + 50 &&
       player.top + 50 >= obstacle.top) {
-      style.backgroundColor = 'transparent';
       this.props.handleCollision();
-    } else {
-      style.backgroundColor = 'red';
     }
 
     style.top = style.top + 'px';

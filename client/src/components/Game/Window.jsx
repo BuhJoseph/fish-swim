@@ -2,12 +2,13 @@ import React from 'react';
 
 import Player from './Player.jsx';
 import Obstacle from './Obstacle.jsx';
+import GameOver from './GameOver.jsx';
 
 class Window extends React.Component {
   constructor(props) {
     super(props);
 
-    this.stages = [1, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.25];
+    this.stages = [1, 1, 1.1, 1.2, 1.4, 1.7, 2, 2.5, 3, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.25];
     this.base = {
       xVel: 5,
       rate: 1200
@@ -30,10 +31,17 @@ class Window extends React.Component {
     this.generateObstacles = this.generateObstacles.bind(this);
     this.incrementStage = this.incrementStage.bind(this);
     this.handleCollision = this.handleCollision.bind(this);
+    this.renderModal = this.renderModal.bind(this);
+    this.reset = this.reset.bind(this);
+    this.startGame = this.startGame.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown);
+    this.startGame();
+  }
+
+  startGame() {
     this.moveLeft();
     this.generateObstacles();
     this.incrementStage();
@@ -56,7 +64,7 @@ class Window extends React.Component {
       obstacles: this.state.obstacles
     };
     if (pass) {
-      state.score = this.state.score + Math.floor(10 * this.stages[this.state.stage]);
+      state.score = this.state.score + this.stages[this.state.stage];
     }
     this.setState(state);
     if (this.state.alive) {
@@ -137,11 +145,14 @@ class Window extends React.Component {
     }
 
     if (this.state.alive) {
-      setTimeout(this.incrementStage, 5000);
+      setTimeout(this.incrementStage, 8000);
     }
   }
 
   handleKeydown(e) {
+    if (!this.state.alive) {
+      return;
+    }
     switch(e.keyCode) {
       //Up arrow
       case 38:
@@ -177,6 +188,27 @@ class Window extends React.Component {
     }
   }
 
+  renderModal() {
+    if (!this.state.alive) {
+      return <GameOver score={this.state.score} reset={this.reset}/>;
+    }
+  }
+
+  reset() {
+    this.setState({
+      alive: true,
+      stage: 0,
+      score: 0,
+      obstacles: [],
+      prevObstacle: Math.floor(Math.random() * 3),
+      playerPos: {
+        top: 300,
+        left: 175
+      }
+    }, () => {
+      this.startGame();
+    });
+  }
 
   render() {
     return (
@@ -190,7 +222,8 @@ class Window extends React.Component {
             return <Obstacle position={obstacle} playerPos={this.state.playerPos} handleCollision={this.handleCollision}/>
           })}
         </div>
-        <div id="score">Score: {this.state.score}</div>
+        <div id="score">Score: {Math.floor(this.state.score)}</div>
+        {this.renderModal()}
       </div>
     );
   }
