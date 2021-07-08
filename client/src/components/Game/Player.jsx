@@ -8,8 +8,7 @@ const Player = props => {
   position.top = position.top + 'px';
   position.left = position.left + 'px';
   return (
-    <div id="player" style={position}>
-    </div>
+    <div id="player" style={position}></div>
   );
 };
 

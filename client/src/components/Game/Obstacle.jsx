@@ -5,9 +5,6 @@ class Obstacle extends React.Component {
     super(props);
 
   }
-
-
-
   render() {
     var player = this.props.playerPos;
     var obstacle = this.props.position;

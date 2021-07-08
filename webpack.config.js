@@ -17,7 +17,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({template: './client/src/assets/fish.gif'})],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/client/dist'),

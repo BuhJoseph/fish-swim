@@ -9,13 +9,25 @@ class Window extends React.Component {
   constructor(props) {
     super(props);
 
-    this.stages = [1, 1, 1.1, 1.2, 1.4, 1.7, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4];
+    //Changeable settings
+    this.stages = [1, 1, 1, 1.1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9,
+                   2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9,
+                   3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9,
+                   4, 4, 4, 4.1, 4.1, 4.1, 4.2, 4.2, 4.2, 4.2, 4.2,
+                   4.3, 4.3, 4.3, 4.3, 4.4, 4.4, 4.4, 4.4, 4.4,
+                   4.5];
     this.base = {
+      //Base speed
       xVel: 5,
-      rate: 1000
+
+      //Obstacle spacing
+      obstacleRate: 1000,
+
+      stageRate: 4000
     }
 
     this.state = {
+      stage: 30,
       alive: true,
       playerPos: {
         top: 300,
@@ -23,8 +35,6 @@ class Window extends React.Component {
       },
       obstacles: [],
       prevObstacle: Math.floor(Math.random() * 3),
-      stage: 0,
-      stageRate: 5000,
       score: 0,
       backgrounds: [
         {
@@ -68,7 +78,7 @@ class Window extends React.Component {
       backgrounds[i].left = backgrounds[i].left - xVel / 3;
       if (backgrounds[i].left < -1300) {
         backgrounds[i].left = 2600 + backgrounds[i].left;
-        backgrounds[i].id = (backgrounds[i].id + 2) % 3 ;
+        backgrounds[i].id = (backgrounds[i].id + 2) % 3;
       }
     }
 
@@ -156,7 +166,7 @@ class Window extends React.Component {
     }
 
     if (this.state.alive) {
-      var rate = this.base.rate / this.stages[this.state.stage];
+      var rate = this.base.obstacleRate / this.stages[this.state.stage];
       setTimeout(this.generateObstacles, rate);
     }
   }
@@ -169,7 +179,7 @@ class Window extends React.Component {
     }
 
     if (this.state.alive) {
-      setTimeout(this.incrementStage, this.state.stageRate);
+      setTimeout(this.incrementStage, this.base.stageRate);
     }
   }
 
@@ -247,6 +257,7 @@ class Window extends React.Component {
           })}
         </div>
         <div id="score">Score: {Math.floor(this.state.score)}</div>
+        <div id="speed">Speed: {this.stages[this.state.stage] * 10}</div>
         {this.renderModal()}
       </div>
     );
