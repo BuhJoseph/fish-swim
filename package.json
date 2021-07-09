@@ -9,8 +9,7 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "heroku-prebuild": "npm install --dev"
+    "watch": "webpack --watch"
   },
   "keywords": [
     "2D",
@@ -24,16 +23,9 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.9",
     "path": "^0.12.7",
-    "pg": "^8.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "webpack-cli": "^4.7.2",
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
-    "@babel/preset-react": "^7.14.5",
-    "@webpack-cli/generators": "^2.2.0",
-    "babel-loader": "^8.2.2",
-    "html-loader": "^2.1.2"
+    "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
