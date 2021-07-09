@@ -1,3 +1,27 @@
+body {
+  background-color: lightblue;
+}
+
+#title {
+  position: absolute;
+  font-size: 50px;
+  left: 50%;
+  top: 50px;
+  transform: translate(-50%);
+}
+
+#controls {
+  position: absolute;
+  left: 50%;
+  margin-left: -650px;
+  top: 50%;
+  margin-top: 310px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 #position-window {
   position: absolute;
   margin: auto;
@@ -51,9 +75,16 @@
   position: absolute;
   height: 70px;
   width: 70px;
-  margin-top: -35px;
-  background-image: url('./assets/mine.png');
-  background-size: contain;
+  margin-top: -18px;
+}
+
+.explode {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  margin-top: -18px;
+  margin-left: -20px;
+  background-size: 100px 100px;
 }
 
 #score {
@@ -74,10 +105,10 @@
   position: absolute;
   z-index: 1;
   width: 300px;
-  height: 600px;
+  height: 550px;
   top: 50%;
   left: 50%;
-  margin-top: -300px;
+  margin-top: -275px;
   margin-left: -150px;
   background-color: cornflowerblue;
   text-align: center;
@@ -96,18 +127,6 @@
   z-index: -1;
   height: 100%;
   width: 100%;
-}
-
-#bg0 {
-  background-image: url('./assets/background1.png');
-}
-
-#bg1 {
-  background-image: url('./assets/background2.png');
-}
-
-#bg2 {
-  background-image: url('./assets/background3.png');
 }
 
 .name {

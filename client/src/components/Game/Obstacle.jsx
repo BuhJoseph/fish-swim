@@ -4,6 +4,10 @@ class Obstacle extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      alive: true,
+      img: 'mine.png'
+    }
   }
   render() {
     var player = this.props.playerPos;
@@ -17,15 +21,22 @@ class Obstacle extends React.Component {
     if (player.left <= obstacle.left + 45 &&
       player.left + 50 >= obstacle.left &&
       player.top <= obstacle.top + 50 &&
-      player.top + 50 >= obstacle.top) {
+      player.top + 50 >= obstacle.top &&
+      this.state.alive) {
       this.props.handleCollision();
+      this.setState({
+        alive: false,
+        img: 'explode.gif'
+      });
     }
 
     style.top = style.top + 'px';
     style.left = style.left + 'px';
 
     return (
-      <div className="obstacle" style={style}></div>
+      <div className="obstacle" style={style}>
+        <img className="obstacle" src={`../../../assets/${this.state.img}`}></img>
+      </div>
     );
   }
 }

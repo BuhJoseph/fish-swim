@@ -23,7 +23,7 @@ class Window extends React.Component {
       //Obstacle spacing
       obstacleRate: 1000,
 
-      stageRate: 4000
+      stageRate: 2000
     }
 
     this.state = {
@@ -251,7 +251,7 @@ class Window extends React.Component {
           {this.state.backgrounds.map(background => {
             return <Background background={background} />
           })}
-          <Player position={this.state.playerPos}/>
+          <Player position={this.state.playerPos} alive={this.state.alive}/>
           {this.state.obstacles.map(obstacle => {
             return <Obstacle position={obstacle} playerPos={this.state.playerPos} handleCollision={this.handleCollision}/>
           })}

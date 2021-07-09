@@ -5,7 +5,9 @@ const Background = props => {
     left: props.background.left + 'px'
   }
   return (
-    <div className="background" id={`bg${props.background.id}`} style={position}></div>
+    <div className="background" style={position}>
+      <img src={`../../../assets/background${props.background.id + 1}.png`}></img>
+    </div>
   );
 }
 
