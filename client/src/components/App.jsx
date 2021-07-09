@@ -6,7 +6,6 @@ import Window from './Game/Window.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {

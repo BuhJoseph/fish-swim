@@ -47,6 +47,10 @@ class GameOver extends React.Component {
     if (this.state.submitted) {
       return;
     }
+    if (this.state.name === '') {
+      alert('Please enter a name.');
+      return;
+    }
     var data = {
       name: this.state.name,
       score: Math.floor(this.props.score)
