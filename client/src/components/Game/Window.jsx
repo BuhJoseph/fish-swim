@@ -27,7 +27,7 @@ class Window extends React.Component {
     }
 
     this.state = {
-      stage: 30,
+      stage: 0,
       alive: true,
       playerPos: {
         top: 300,
