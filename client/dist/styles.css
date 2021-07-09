@@ -45,9 +45,11 @@ body {
   width: 100px;
   margin-top: -50px;
   margin-left: -25px;
-  background-image: url('./assets/fish.gif');
-  background-size: contain;
-  background-position: center;
+}
+
+.fish {
+  height: 100px;
+  width: 100px;
 }
 
 #lane0 {
@@ -80,11 +82,10 @@ body {
 
 .explode {
   position: absolute;
-  height: 70px;
-  width: 70px;
-  margin-top: -18px;
-  margin-left: -20px;
-  background-size: 100px 100px;
+  height: 150px;
+  width: 150px;
+  margin-top: -50px;
+  margin-left: -50px;
 }
 
 #score {

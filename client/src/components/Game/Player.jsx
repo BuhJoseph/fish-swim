@@ -8,7 +8,9 @@ const Player = props => {
   position.top = position.top + 'px';
   position.left = position.left + 'px';
   return (
-    <div id={props.alive ? 'player' : null} style={position}></div>
+    <div id="player" style={position}>
+      <img className="fish" src={`../../../assets/${props.alive ? 'fish.gif' : 'dead_fish.png'}`}></img>
+    </div>
   );
 };
 

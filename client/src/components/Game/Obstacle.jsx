@@ -35,7 +35,7 @@ class Obstacle extends React.Component {
 
     return (
       <div className="obstacle" style={style}>
-        <img className="obstacle" src={`../../../assets/${this.state.img}`}></img>
+        <img src={`../../../assets/${this.state.img}`} className={this.state.alive ? 'obstacle' : 'explode'}></img>
       </div>
     );
   }
