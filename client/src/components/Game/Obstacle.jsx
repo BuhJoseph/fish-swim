@@ -9,27 +9,29 @@ class Obstacle extends React.Component {
       img: 'mine.png'
     }
   }
-  render() {
+
+  componentDidUpdate() {
     var player = this.props.playerPos;
     var obstacle = this.props.position;
 
-    var style = {};
-    for (var key in obstacle) {
-      style[key] = obstacle[key];
-    }
-
-    if (player.left <= obstacle.left + 45 &&
-      player.left + 50 >= obstacle.left &&
-      player.top <= obstacle.top + 50 &&
-      player.top + 50 >= obstacle.top &&
-      this.state.alive) {
+    if (player.left <= obstacle.left + 40 &&
+        player.left + 50 >= obstacle.left &&
+        player.top <= obstacle.top + 50 &&
+        player.top + 50 >= obstacle.top &&
+        this.state.alive) {
       this.props.handleCollision();
       this.setState({
         alive: false,
         img: 'explode.gif'
       });
     }
+  }
 
+  render() {
+    var style = {};
+    for (var key in this.props.position) {
+      style[key] = this.props.position[key];
+    }
     style.top = style.top + 'px';
     style.left = style.left + 'px';
 
