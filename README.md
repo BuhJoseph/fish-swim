@@ -8,7 +8,8 @@ This is a 2D side scroller game where you play as a fish and dodge the incoming 
 
 ## Demo
 
-[![Fish Swim](https://imgur.com/a/4YHKgWY)](https://www.youtube.com/watch?v=bdcazQHudoY)
+[![Fish Swim](https://imgur.com/a/4YHKgWY)]
+(https://www.youtube.com/watch?v=bdcazQHudoY "Fish Swim")
 
   
 ## Features
