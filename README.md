@@ -19,8 +19,8 @@ Insert gif or link to demo
 
   
 ## Screenshots
-<img width="240" alt="Screen_Shot_2021-07-23_at_11 14 18_AM" src="https://user-images.githubusercontent.com/22485685/127078898-3141f4a1-c9de-4b70-bfd3-af82a3c74e99.png">
-![Screen Shot 2021-07-23 at 4 59 48 PM](https://user-images.githubusercontent.com/22485685/127078914-e6ea4dff-4fc4-4265-84f3-c80c2ab94673.png)
+<img width="1680" alt="Screen Shot 2021-07-26 at 6 04 46 PM" src="https://user-images.githubusercontent.com/22485685/127078986-034ba9da-47a1-46e2-a8f2-e428e7c17c01.png">
+<img width="1680" alt="Screen Shot 2021-07-26 at 6 06 45 PM" src="https://user-images.githubusercontent.com/22485685/127078991-330c8391-a33c-4ad4-a4b8-111c3012bb43.png">
 
 
   
