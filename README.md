@@ -1,5 +1,6 @@
 
 
+
 # Fish Swim
 
 This is a 2D side scroller game where you play as a fish and dodge the incoming mines. This was built using purely React and CSS in about 2 days.
@@ -7,7 +8,7 @@ This is a 2D side scroller game where you play as a fish and dodge the incoming 
 
 ## Demo
 
-
+[!<img width="1191" alt="Screen Shot 2021-07-26 at 7 29 43 PM" src="https://user-images.githubusercontent.com/22485685/127085729-c7a29dfa-fd91-4b67-a5b0-af7aed1fe6aa.png">]
 
   
 ## Features
