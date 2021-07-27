@@ -44,6 +44,12 @@ Install dependencies
   npm install
 ```
 
+Transpile JSX
+
+```bash
+  npm run build:prod
+```
+
 Start the server
 
 ```bash
