@@ -7,7 +7,7 @@ This is a 2D side scroller game where you play as a fish and dodge the incoming 
 
 ## Demo
 
-Insert gif or link to demo
+
 
   
 ## Features
@@ -29,13 +29,13 @@ Insert gif or link to demo
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone git@github.com:BuhJoseph/fish-swim.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd fish-swim
 ```
 
 Install dependencies
@@ -47,7 +47,7 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run start
+  npm start
 ```
 
 Setup postgres database
